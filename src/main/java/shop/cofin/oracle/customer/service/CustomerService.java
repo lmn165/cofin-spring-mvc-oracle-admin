@@ -1,13 +1,13 @@
-package shop.cofin.oracle.mappers;
+package shop.cofin.oracle.customer.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import shop.cofin.oracle.customer.domain.CustomerDto;
 
-@Repository
-public interface CustomerMapper {
+@Component
+public interface CustomerService {
 	public List<CustomerDto> findAll();
 	public CustomerDto findByCustId(int custId);
 	public List<CustomerDto> findByCustName(String custName);
