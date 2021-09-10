@@ -22,6 +22,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<!-- @Repository를 찾는다. '.'경로지정 -->
 	<mybatis-spring:scan base-package="package shop.cofin.oracle.mappers;"/>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -35,10 +36,12 @@
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
+	<!-- 매퍼와 연동될 xml파일들을 찾는다 '/'경로지정 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="basicDataSource"/>
 		<property name="mapperLocations" value="classpath:shop/cofin/oracle/mappers/*.xml"/>
 	</bean>
+	
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
 		<property name="dataSource" ref="basicDataSource"/>
 	</bean>
