@@ -35,22 +35,23 @@ public class HomeController {
 		return "/user/Join";
 	}
 	
-	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
+	// GET 방식은 다음과 같이 생략이 가능하다.(default가 GET..)
+	@RequestMapping("/loginform")
 	public String login() {
 		return "/user/Login";
 	}
 	
-	@RequestMapping(value = "/registBook", method = RequestMethod.GET)
+	@RequestMapping("/registBook")
 	public String bookRegist() {
 		return "/book/regist";
 	}
 	
-	@RequestMapping(value = "/registPublisher", method = RequestMethod.GET)
+	@RequestMapping("/registPublisher")
 	public String publisherRegist() {
 		return "/publisher/regist";
 	}
 	
-	@RequestMapping(value = "/registOrder", method = RequestMethod.GET)
+	@RequestMapping("/registOrder")
 	public String orderRegist() {
 		return "/order/regist";
 	}
