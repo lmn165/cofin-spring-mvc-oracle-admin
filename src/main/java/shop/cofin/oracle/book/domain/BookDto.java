@@ -12,6 +12,38 @@ public class BookDto {
 	private int price;
 	private int pubId;
 	
+	public int getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
+	public String getBookTitle() {
+		return bookTitle;
+	}
+
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(int pubId) {
+		this.pubId = pubId;
+	}
+
 	@Override
 	public String toString() {
 		

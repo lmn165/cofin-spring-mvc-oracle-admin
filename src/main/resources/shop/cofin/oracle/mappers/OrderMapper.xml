@@ -60,4 +60,9 @@
 		from orders
         where order_date >= '2007'||'${value}'
 	</select>
+	<insert id="save" parameterType="shop.cofin.oracle.order.domain.OrderDto">
+		insert into
+		orders (order_id, cust_id, book_id, order_price, order_date)
+		values (${orderId}, ${custId}, ${bookId}, ${orderPrice}, #{orderDate})
+	</insert>
 </mapper>

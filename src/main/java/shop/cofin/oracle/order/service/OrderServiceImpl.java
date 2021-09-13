@@ -41,6 +41,12 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderDto> findByOrderDate(String orderDate) {
 		return orderMapper.findByOrderDate(orderDate);
 	}
+
+	@Override
+	public void save(OrderDto order) {
+		orderMapper.save(order);
+	}
+
 	
 	
 }

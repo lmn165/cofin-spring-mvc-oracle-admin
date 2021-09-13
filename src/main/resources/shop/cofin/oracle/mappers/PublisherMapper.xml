@@ -45,4 +45,9 @@
 		from publishers
         where phone like '010-'||'${value}'||'%'
 	</select>
+	<insert id="save" parameterType="shop.cofin.oracle.publisher.domain.PublisherDto">
+		insert into
+		publishers (pub_id, pub_name, mgr_name, phone)
+		values (${pubId}, #{pubName}, #{mgrName}, #{phone})
+	</insert>
 </mapper>

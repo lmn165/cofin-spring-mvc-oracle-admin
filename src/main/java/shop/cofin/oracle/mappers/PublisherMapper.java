@@ -13,4 +13,5 @@ public interface PublisherMapper {
 	public List<PublisherDto> findByPubName(String pubName);
 	public List<PublisherDto> findByMgrName(String mgrName);
 	public List<PublisherDto> findByPhone(String phone);
+	public void save(PublisherDto publisher);
 }

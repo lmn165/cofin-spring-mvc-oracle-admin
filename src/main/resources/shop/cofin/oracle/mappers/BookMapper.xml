@@ -50,4 +50,9 @@
 		  from books
 		  where price >= ${price}
 	</select>
+	<insert id="save" parameterType="shop.cofin.oracle.book.domain.BookDto">
+		insert into 
+		books(book_id, book_title, price, pub_id)
+		values(${bookId}, #{bookTitle}, ${price}, ${pubId})
+	</insert>
 </mapper>

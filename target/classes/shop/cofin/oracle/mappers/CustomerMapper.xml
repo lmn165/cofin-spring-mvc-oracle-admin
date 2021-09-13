@@ -45,4 +45,9 @@
   		from customers
         where phone like '%'||'${value}'
 	</select>
+	<insert id="save" parameterType="shop.cofin.oracle.customer.domain.CustomerDto">
+		insert into 
+		customers (cust_id, cust_name, address, phone)
+		values (${custId}, #{custName}, #{address}, #{phone})
+	</insert>
 </mapper>
