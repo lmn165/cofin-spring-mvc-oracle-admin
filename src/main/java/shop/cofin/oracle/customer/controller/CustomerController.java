@@ -3,12 +3,13 @@ package shop.cofin.oracle.customer.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.cofin.oracle.customer.domain.CustomerDto;
 import shop.cofin.oracle.customer.service.CustomerService;
@@ -19,41 +20,46 @@ public class CustomerController {
 	@Autowired CustomerService customerService;
 	@Autowired CustomerDto customer;
 	
-	@RequestMapping(value = "/join", method = {RequestMethod.POST})
-	public String join(
-			@RequestParam("custId") int custId,
-			@RequestParam("custName") String custName,
-			@RequestParam("address") String address,
-			@RequestParam("phone") String phone) {
-		System.out.printf("custId : %s\ncustName : %s\naddress : %s\nphone: %s\n", custId, custName, address, phone);
-		
-		customer = new CustomerDto();
-		customer.setCustId(custId);
-		customer.setCustName(custName);
-		customer.setAddress(address);
-		customer.setPhone(phone);
+	@RequestMapping(value = "/register", method = {RequestMethod.POST})
+	public String save(CustomerDto customer) {
 		customerService.save(customer);
-		
 		return "회원가입 성공";
 	}
-	
-	@RequestMapping(value = "/login", method = {RequestMethod.POST})
-	public String login() {
-//		return "loginForm";
-		return "/user/Login";
+
+	@RequestMapping("/detail/{id}")
+	public String findById(@PathVariable Integer id) {
+		System.out.println(customerService.findById(id).toString());
+		return "id로 회원찾기";
 	}
-	
-	@GetMapping("/")
-	public void findAll() {
-		List<CustomerDto> customers = customerService.findAll();
-		for(CustomerDto customer : customers) {
+
+	@RequestMapping("/")
+	public String findAll() {
+		List<CustomerDto> cutomers = customerService.findAll();
+		for (CustomerDto customer : cutomers) {
 			System.out.println(customer.toString());
 		}
+		return "모든 회원 찾기";
+	}
+
+	@RequestMapping(value = "/update", method = {RequestMethod.POST})
+	public String update(CustomerDto customer) {
+		customerService.update(customer);
+		return "회원 정보 수정";
+	}
+
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id) {
+		customerService.delete(id);
+		return "회원 정보 삭제";
 	}
 	
-	@GetMapping("/custId/{custId}")
-	public void findByCustId(@PathVariable int custId) {
-		System.out.println(customerService.findByCustId(custId));
+	
+	
+	@RequestMapping(value = "/login", method = {RequestMethod.POST})
+	public String login(
+			@RequestBody CustomerDto customer) {
+//		customerService.login(customer);
+		return "/user/Login";
 	}
 	
 	@GetMapping("/custName/{custName}")

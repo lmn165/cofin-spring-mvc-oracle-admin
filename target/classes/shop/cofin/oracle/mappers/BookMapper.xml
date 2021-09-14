@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop.cofin.oracle.mappers.BookMapper">
 
-	<select id="findAll" resultType="shop.cofin.oracle.book.domain.BookDto">
+	<select id="findAll" resultType="book">
 		select 
 			book_id bookId,
 		 	book_title bookTitle,
@@ -10,8 +10,7 @@
 		 	pub_id pubId
 		  from books
 	</select>
-	
-	<select id="findById" resultType="shop.cofin.oracle.book.domain.BookDto" parameterType="int">
+	<select id="findById" resultType="book" parameterType="int">
 		select 
 			book_id bookId,
 		 	book_title bookTitle,
@@ -20,8 +19,25 @@
 		  from books
 		  where book_id like ${bookId}
 	</select>
+	<insert id="save" parameterType="book">
+		insert into 
+		books(book_id, book_title, price, pub_id)
+		values(${bookId}, #{bookTitle}, ${price}, ${pubId})
+	</insert>
+	<update id="update" parameterType="book">
+		update books set
+		 	book_title = #{bookTitle},
+		 	price = ${price},
+		 	pub_id = ${pubId}
+		 where book_id like ${bookId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from books
+		where book_id like ${bookId}
+	</delete>
 	
-	<select id="findByPubId" resultType="shop.cofin.oracle.book.domain.BookDto" parameterType="int">
+	
+	<select id="findByPubId" resultType="book" parameterType="int">
 		select 
 			book_id bookId,
 		 	book_title bookTitle,
@@ -31,7 +47,7 @@
 		  where pub_id like ${pubId}
 	</select>
 	
-	<select id="findByBookTitle" resultType="shop.cofin.oracle.book.domain.BookDto" parameterType="string">
+	<select id="findByBookTitle" resultType="book" parameterType="string">
 		select 
 			book_id bookId,
 		 	book_title bookTitle,
@@ -41,7 +57,7 @@
 		  where book_title like '%' || '${value}' || '%'
 	</select>
 	
-	<select id="findByPrice" resultType="shop.cofin.oracle.book.domain.BookDto" parameterType="int">
+	<select id="findByPrice" resultType="book" parameterType="int">
 		select 
 			book_id bookId,
 		 	book_title bookTitle,
@@ -50,9 +66,4 @@
 		  from books
 		  where price >= ${price}
 	</select>
-	<insert id="save" parameterType="shop.cofin.oracle.book.domain.BookDto">
-		insert into 
-		books(book_id, book_title, price, pub_id)
-		values(${bookId}, #{bookTitle}, ${price}, ${pubId})
-	</insert>
 </mapper>

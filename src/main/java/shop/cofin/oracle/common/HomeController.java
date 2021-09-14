@@ -1,4 +1,4 @@
-package shop.cofin.oracle;
+package shop.cofin.oracle.common;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(
 			HttpSession session,
@@ -29,10 +27,18 @@ public class HomeController {
 		session.setAttribute("contextPath", contextPath);
 		return "index";
 	}
-	
-	@RequestMapping(value = "/joinform", method = RequestMethod.GET)
+
+	@RequestMapping("/user/join")
 	public String join() {
-		return "/user/Join";
+		return "/user/Register";
+	}
+	@RequestMapping("/user/update")
+	public String update() {
+		return "/user/Update";
+	}
+	@RequestMapping("/user/detail")
+	public String detail() {
+		return "/user/Detail";
 	}
 	
 	// GET 방식은 다음과 같이 생략이 가능하다.(default가 GET..)
@@ -41,18 +47,55 @@ public class HomeController {
 		return "/user/Login";
 	}
 	
-	@RequestMapping("/registBook")
+	
+	
+	@RequestMapping("/book/regist")
 	public String bookRegist() {
-		return "/book/regist";
+		return "/book/Register";
 	}
 	
-	@RequestMapping("/registPublisher")
+	@RequestMapping("/book/detail")
+	public String bookDetail() {
+		return "/book/Detail";
+	}
+	
+	@RequestMapping("/book/update")
+	public String bookUpdate() {
+		return "/book/Update";
+	}
+	
+	
+
+	@RequestMapping("/publisher/regist")
 	public String publisherRegist() {
-		return "/publisher/regist";
+		return "/publisher/Register";
 	}
 	
-	@RequestMapping("/registOrder")
+	@RequestMapping("/publisher/detail")
+	public String publisherDetail() {
+		return "/publisher/Detail";
+	}
+	
+	@RequestMapping("/publisher/update")
+	public String publisherUpdate() {
+		return "/publisher/Update";
+	}
+	
+	
+
+	
+	@RequestMapping("/order/regist")
 	public String orderRegist() {
-		return "/order/regist";
+		return "/order/Register";
+	}
+	
+	@RequestMapping("/order/detail")
+	public String orderDetail() {
+		return "/order/Detail";
+	}
+	
+	@RequestMapping("/order/update")
+	public String orderUpdate() {
+		return "/order/Update";
 	}
 }

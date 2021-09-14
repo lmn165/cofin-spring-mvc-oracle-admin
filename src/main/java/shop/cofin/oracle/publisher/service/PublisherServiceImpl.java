@@ -17,11 +17,28 @@ public class PublisherServiceImpl implements PublisherService {
 		return publisherMapper.findAll();
 	}
 
+
 	@Override
-	public PublisherDto findByPubId(int pubId) {
-		return publisherMapper.findByPubId(pubId);
+	public PublisherDto findById(Integer id) {
+		return publisherMapper.findById(id);
 	}
 
+	@Override
+	public void update(PublisherDto t) {
+		publisherMapper.update(t);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		publisherMapper.delete(id);
+	}
+
+	@Override
+	public void save(PublisherDto t) {
+		publisherMapper.save(t);
+	}
+
+	
 	@Override
 	public List<PublisherDto> findByPubName(String pubName) {
 		return publisherMapper.findByPubName(pubName);
@@ -36,10 +53,4 @@ public class PublisherServiceImpl implements PublisherService {
 	public List<PublisherDto> findByPhone(String phone) {
 		return publisherMapper.findByPhone(phone);
 	}
-
-	@Override
-	public void save(PublisherDto publisher) {
-		publisherMapper.save(publisher);
-	}
-
 }

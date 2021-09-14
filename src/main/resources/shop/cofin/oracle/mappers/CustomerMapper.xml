@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop.cofin.oracle.mappers.CustomerMapper">
-	<select id="findAll" resultType="shop.cofin.oracle.customer.domain.CustomerDto">
+	<select id="findAll" resultType="customer">
 		select 
     		cust_id custId,
     		cust_name custName,
@@ -9,7 +9,7 @@
     		phone
   		from customers
 	</select>
-	<select id="findByCustId" resultType="shop.cofin.oracle.customer.domain.CustomerDto" parameterType="int">
+	<select id="findById" resultType="customer" parameterType="int">
 		select 
     		cust_id custId,
     		cust_name custName,
@@ -18,7 +18,25 @@
   		from customers
         where cust_id like ${custId}
 	</select>
-	<select id="findByCustName" resultType="shop.cofin.oracle.customer.domain.CustomerDto" parameterType="string">
+	<insert id="save" parameterType="customer">
+		insert into 
+		customers (cust_id, cust_name, address, phone)
+		values (${custId}, #{custName}, #{address}, #{phone})
+	</insert>
+	<update id="update" parameterType="customer">
+		update customers set
+    		cust_name = #{custName},
+    		address = #{address},
+    		phone = #{phone}
+    	where cust_id like ${custId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from customers
+		where cust_id like ${custId}
+	</delete>
+	
+	
+	<select id="findByCustName" resultType="customer" parameterType="string">
 		select 
     		cust_id custId,
     		cust_name custName,
@@ -27,7 +45,7 @@
   		from customers
         where cust_name like '${value}'
 	</select>
-	<select id="findByAddress" resultType="shop.cofin.oracle.customer.domain.CustomerDto" parameterType="string">
+	<select id="findByAddress" resultType="customer" parameterType="string">
 		select 
     		cust_id custId,
     		cust_name custName,
@@ -36,7 +54,7 @@
   		from customers
         where address like '%'||'${value}'||'%'
 	</select>
-	<select id="findByPhone" resultType="shop.cofin.oracle.customer.domain.CustomerDto" parameterType="string">
+	<select id="findByPhone" resultType="customer" parameterType="string">
 		select 
     		cust_id custId,
     		cust_name custName,
@@ -45,9 +63,4 @@
   		from customers
         where phone like '%'||'${value}'
 	</select>
-	<insert id="save" parameterType="shop.cofin.oracle.customer.domain.CustomerDto">
-		insert into 
-		customers (cust_id, cust_name, address, phone)
-		values (${custId}, #{custName}, #{address}, #{phone})
-	</insert>
 </mapper>

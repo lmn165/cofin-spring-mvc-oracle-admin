@@ -19,11 +19,6 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public CustomerDto findByCustId(int custId) {
-		return customerMapper.findByCustId(custId);
-	}
-
-	@Override
 	public List<CustomerDto> findByCustName(String custName) {
 		return customerMapper.findByCustName(custName);
 	}
@@ -41,6 +36,21 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void save(CustomerDto customer) {
 		customerMapper.save(customer);
+	}
+
+	@Override
+	public CustomerDto findById(Integer id) {
+		return customerMapper.findById(id);
+	}
+
+	@Override
+	public void update(CustomerDto t) {
+		customerMapper.update(t);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		customerMapper.delete(id);
 	}
 
 }

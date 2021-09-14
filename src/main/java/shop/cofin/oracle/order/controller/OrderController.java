@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shop.cofin.oracle.common.GenericInterface;
 import shop.cofin.oracle.order.domain.OrderDto;
 import shop.cofin.oracle.order.service.OrderService;
 
@@ -18,38 +20,48 @@ public class OrderController {
 	@Autowired OrderService orderService;
 	@Autowired OrderDto order;
 	
-	@RequestMapping(value = "/regist", method = {RequestMethod.POST})
-	public String regist(
-			@RequestParam int orderId,
-			@RequestParam int custId,
-			@RequestParam int bookId,
-			@RequestParam int orderPrice,
-			@RequestParam String orderDate
-			) {
-		order = new OrderDto();
-		order.setOrderId(orderId);
-		order.setCustId(custId);
-		order.setBookId(bookId);
-		order.setOrderPrice(orderPrice);
-		order.setOrderDate(orderDate);
-		
+	@RequestMapping(value = "/register", method = {RequestMethod.POST})
+	public String save(OrderDto order) {
 		orderService.save(order);
-		
 		return "주문 등록 완료";
 	}
-	
+
+//	@RequestMapping(value = "/orderId", method = {RequestMethod.POST})
+//	public String findById(@RequestBody OrderDto order) {
+//		orderService.findById(order.getOrderId());
+//		return "주문 번호로 조회 완료";
+//	}
+
 	@RequestMapping("/")
-	public void findAll() {
+	public String findAll() {
 		List<OrderDto> orders = orderService.findAll();
 		for(OrderDto order : orders) {
 			System.out.println(order.toString());
 		}
+		return "전체 주문 내역 조회";
 	}
 
-	@RequestMapping("/orderId/{orderId}")
-	public void findByOrderId(@PathVariable int orderId) {
-		System.out.println(orderService.findByOrderId(orderId));
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(OrderDto order) {
+		orderService.update(order);
+		return "주문 수정 완료";
 	}
+
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id) {
+		orderService.delete(id);
+		return "주문 취소";
+	}
+	
+	@RequestMapping("/detail/{id}")
+	public String findById(@PathVariable Integer id) {
+		System.out.println(orderService.findById(id).toString());
+		return "orderId로 주문 찾기";
+	}
+	
+	
+
+	
 
 	@RequestMapping("/custId/{custId}")
 	public void findByCustId(@PathVariable int custId) {
@@ -82,4 +94,5 @@ public class OrderController {
 			System.out.println(order.toString());
 		}
 	}
+
 }

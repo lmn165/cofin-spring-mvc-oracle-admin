@@ -18,11 +18,6 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public OrderDto findByOrderId(int orderId) {
-		return orderMapper.findByOrderId(orderId);
-	}
-
-	@Override
 	public List<OrderDto> findByCustId(int custId) {
 		return orderMapper.findByCustId(custId);
 	}
@@ -45,6 +40,21 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public void save(OrderDto order) {
 		orderMapper.save(order);
+	}
+
+	@Override
+	public OrderDto findById(Integer id) {
+		return orderMapper.findById(id);
+	}
+
+	@Override
+	public void update(OrderDto t) {
+		orderMapper.update(t);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		orderMapper.delete(id);
 	}
 
 	
