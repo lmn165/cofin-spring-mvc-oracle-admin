@@ -2,6 +2,8 @@ package shop.cofin.oracle.publisher.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,9 +50,9 @@ public class PublisherController {
 		return "출판사 수정 완료";
 	}
 
-	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
-		publisherService.delete(id);
+	@RequestMapping("/delete")
+	public String delete(@PathParam("pubId") Integer pubId) {
+		publisherService.delete(pubId);
 		return "출판사 삭제 완료";
 	}
 	

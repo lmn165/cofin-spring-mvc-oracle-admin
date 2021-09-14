@@ -34,5 +34,15 @@
   
 </form>
 
+
+<h2>주문 삭제</h2>
+<form action="<%= application.getContextPath() %>/orders/delete">
+  <div class="container">
+    <label for="orderId"><b>orderId</b></label>
+    <input type="text" placeholder="orderId" name="orderId" required>
+
+    <button type="submit">주문 삭제!</button>
+  </div>
+</form>
 </body>
 </html>

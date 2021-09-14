@@ -2,6 +2,8 @@ package shop.cofin.oracle.customer.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -47,9 +49,9 @@ public class CustomerController {
 		return "회원 정보 수정";
 	}
 
-	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
-		customerService.delete(id);
+	@RequestMapping("/delete")
+	public String delete(@PathParam("custId") Integer custId) {
+		customerService.delete(custId);
 		return "회원 정보 삭제";
 	}
 	

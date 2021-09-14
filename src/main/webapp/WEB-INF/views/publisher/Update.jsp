@@ -26,5 +26,15 @@
   </div>
 </form>
 
+<h2>출판사 삭제</h2>
+<form action="<%= application.getContextPath() %>/publishers/delete" method="post">
+  <div class="container">
+    <label for="pubId"><b>pubId</b></label>
+    <input type="text" placeholder="pubId" name="pubId" required>
+
+    <button type="submit">출판사 삭제!</button>
+  </div>
+</form>
+
 </body>
 </html>

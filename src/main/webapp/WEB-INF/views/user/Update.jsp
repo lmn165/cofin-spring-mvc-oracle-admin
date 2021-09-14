@@ -29,5 +29,17 @@
   </div>
 </form>
 
+
+<h2>개인정보 삭제</h2>
+<form action="<%= application.getContextPath() %>/customers/delete" method="post">
+  <div class="container">
+    <label for="custId"><b>custId</b></label>
+    <input type="text" placeholder="custId" name="custId" required>
+
+    <button type="submit">개인정보 삭제!</button>
+  </div>
+</form>
+
+
 </body>
 </html>

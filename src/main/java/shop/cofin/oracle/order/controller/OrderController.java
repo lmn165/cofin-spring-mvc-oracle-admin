@@ -2,6 +2,8 @@ package shop.cofin.oracle.order.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,9 +49,9 @@ public class OrderController {
 		return "주문 수정 완료";
 	}
 
-	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
-		orderService.delete(id);
+	@RequestMapping("/delete")
+	public String delete(@PathParam("orderId") Integer orderId) {
+		orderService.delete(orderId);
 		return "주문 취소";
 	}
 	

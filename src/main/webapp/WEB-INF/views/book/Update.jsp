@@ -23,5 +23,16 @@
   </div>
 </form>
 
+
+<h2>책 삭제</h2>
+<form action="<%= application.getContextPath() %>/books/delete">
+  <div class="container">
+    <label for="bookId"><b>bookId</b></label>
+    <input type="text" placeholder="bookId" name="bookId" required>
+
+    <button type="submit">책 삭제!</button>
+  </div>
+</form>
+
 </body>
 </html>
