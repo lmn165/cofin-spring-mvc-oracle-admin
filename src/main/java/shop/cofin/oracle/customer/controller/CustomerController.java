@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.cofin.oracle.customer.domain.CustomerDto;
 import shop.cofin.oracle.customer.service.CustomerService;
@@ -28,13 +29,13 @@ public class CustomerController {
 		return "회원가입 성공";
 	}
 
-	@RequestMapping("/detail/{id}")
-	public String findById(@PathVariable Integer id) {
-		System.out.println(customerService.findById(id).toString());
+	@RequestMapping("/detail")
+	public String findById(@RequestParam("custId") Integer custId) {
+		System.out.println(customerService.findById(custId).toString());
 		return "id로 회원찾기";
 	}
 
-	@RequestMapping("/")
+	@RequestMapping
 	public String findAll() {
 		List<CustomerDto> cutomers = customerService.findAll();
 		for (CustomerDto customer : cutomers) {
@@ -50,7 +51,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/delete")
-	public String delete(@PathParam("custId") Integer custId) {
+	public String delete(@RequestParam("custId") Integer custId) {
 		customerService.delete(custId);
 		return "회원 정보 삭제";
 	}

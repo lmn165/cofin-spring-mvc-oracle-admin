@@ -23,7 +23,7 @@ public class BookController {
 @Autowired BookService bookService;
 @Autowired BookDto book;
 
-	@RequestMapping("/")
+	@RequestMapping
 	public String findAll() {
 		List<BookDto> books = bookService.findAll();
 		for(BookDto book : books) {
@@ -32,9 +32,9 @@ public class BookController {
 		return "전체 도서목록 조회 완료";
 	}
 	
-	@RequestMapping("/detail/{id}")
-	public String findById(@PathVariable int id) {
-		BookDto book = bookService.findById(id);
+	@RequestMapping("/detail")
+	public String findById(@RequestParam("bookId") int bookId) {
+		BookDto book = bookService.findById(bookId);
 		System.out.println(book.toString());
 		return "bookId로 도서 조회 완료";
 	}
@@ -46,7 +46,7 @@ public class BookController {
 	}
 
 	@RequestMapping("/delete")
-	public String delete(@PathParam("bookId") Integer bookId) {
+	public String delete(@RequestParam("bookId") Integer bookId) {
 		bookService.delete(bookId);
 		return "도서 삭제 완료";
 	}

@@ -34,7 +34,7 @@ public class OrderController {
 //		return "주문 번호로 조회 완료";
 //	}
 
-	@RequestMapping("/")
+	@RequestMapping
 	public String findAll() {
 		List<OrderDto> orders = orderService.findAll();
 		for(OrderDto order : orders) {
@@ -50,14 +50,14 @@ public class OrderController {
 	}
 
 	@RequestMapping("/delete")
-	public String delete(@PathParam("orderId") Integer orderId) {
+	public String delete(@RequestParam("orderId") Integer orderId) {
 		orderService.delete(orderId);
 		return "주문 취소";
 	}
 	
-	@RequestMapping("/detail/{id}")
-	public String findById(@PathVariable Integer id) {
-		System.out.println(orderService.findById(id).toString());
+	@RequestMapping("/detail")
+	public String findById(@RequestParam("orderId") Integer orderId) {
+		System.out.println(orderService.findById(orderId).toString());
 		return "orderId로 주문 찾기";
 	}
 	

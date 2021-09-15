@@ -8,16 +8,11 @@
 
 <h2>책 상세</h2>
 
-<form action="<%= application.getContextPath() %>/books/detail" method="post">
+<form action="<%= application.getContextPath() %>/books/detail">
   <div class="container">
     <label for="bookId"><b>bookId</b></label>
     	<input type="text" placeholder="bookId" name="bookId" required>
-    <label for="bookTitle"><b>bookTitle</b></label>
-    	<input type="text" placeholder="bookTitle" name="bookTitle" required>
-    <label for="price"><b>price</b></label>
-    	<input type="text" placeholder="price" name="price" required>
-    <label for="pubId"><b>pubId</b></label>
-    	<input type="text" placeholder="pubId" name="pubId" required>
+
     <button type="submit">책 상세</button>
   </div>
 </form>

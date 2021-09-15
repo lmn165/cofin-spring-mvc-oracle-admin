@@ -8,21 +8,12 @@
 
 <h2>유저 상세</h2>
 
-<form action="<%= application.getContextPath() %>/customers/detail" method="post">
+<form action="<%= application.getContextPath() %>/customers/detail">
 
   <div class="container">
     <label for="custId"><b>custId</b></label>
     <input type="text" placeholder="custId" name="custId" required>
 
-    <label for="custName"><b>custName</b></label>
-    <input type="text" placeholder="custName" name="custName" required>
-        
-    <label for="address"><b>address</b></label>
-    <input type="text" placeholder="address" name="address" required>
-
-    <label for="phone"><b>phone</b></label>
-    <input type="text" placeholder="phone" name="phone" required>
-    
     <button type="submit">유저 상세!</button>
   </div>
 </form>

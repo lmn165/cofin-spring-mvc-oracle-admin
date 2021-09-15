@@ -29,13 +29,13 @@ public class PublisherController {
 		return "출판사 등록 완료";
 	}
 
-	@RequestMapping("/detail/{id}")
-	public String findById(@PathVariable Integer id) {
-		System.out.println(publisherService.findById(id).toString());
+	@RequestMapping("/detail")
+	public String findById(@RequestParam("pubId") Integer pubId) {
+		System.out.println(publisherService.findById(pubId).toString());
 		return "id로 출판사 조회 완료";
 	}
 
-	@RequestMapping("/")
+	@RequestMapping
 	public String findAll() {
 		List<PublisherDto> publishers = publisherService.findAll();
 		for(PublisherDto publisher : publishers) {
@@ -51,7 +51,7 @@ public class PublisherController {
 	}
 
 	@RequestMapping("/delete")
-	public String delete(@PathParam("pubId") Integer pubId) {
+	public String delete(@RequestParam("pubId") Integer pubId) {
 		publisherService.delete(pubId);
 		return "출판사 삭제 완료";
 	}

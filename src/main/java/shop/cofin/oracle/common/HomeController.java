@@ -40,6 +40,10 @@ public class HomeController {
 	public String detail() {
 		return "/user/Detail";
 	}
+	@RequestMapping("/user/list")
+	public String list() {
+		return "/user/List";
+	}
 	
 	// GET 방식은 다음과 같이 생략이 가능하다.(default가 GET..)
 	@RequestMapping("/loginform")
@@ -63,6 +67,11 @@ public class HomeController {
 	public String bookUpdate() {
 		return "/book/Update";
 	}
+
+	@RequestMapping("/book/list")
+	public String bookList() {
+		return "/book/List";
+	}
 	
 	
 
@@ -81,6 +90,11 @@ public class HomeController {
 		return "/publisher/Update";
 	}
 	
+	@RequestMapping("/publisher/list")
+	public String publisherList() {
+		return "/publisher/List";
+	}
+	
 	
 
 	
@@ -93,9 +107,14 @@ public class HomeController {
 	public String orderDetail() {
 		return "/order/Detail";
 	}
-	
+
 	@RequestMapping("/order/update")
 	public String orderUpdate() {
 		return "/order/Update";
+	}
+	
+	@RequestMapping("/order/list")
+	public String orderList() {
+		return "/order/List";
 	}
 }

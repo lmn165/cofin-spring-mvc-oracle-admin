@@ -31,7 +31,7 @@
 
 
 <h2>개인정보 삭제</h2>
-<form action="<%= application.getContextPath() %>/customers/delete" method="post">
+<form action="<%= application.getContextPath() %>/customers/delete">
   <div class="container">
     <label for="custId"><b>custId</b></label>
     <input type="text" placeholder="custId" name="custId" required>
