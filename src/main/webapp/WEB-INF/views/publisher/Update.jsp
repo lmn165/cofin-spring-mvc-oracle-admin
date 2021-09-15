@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="ctx" value="<%= request.getContextPath() %>" />
 <jsp:include page="../common/head.jsp"/>
 <body>
 
 <h2>출판사 수정</h2>
 
-<form action="<%= application.getContextPath() %>/publishers/update" method="post">
+<form action="${ctx}/publishers/update" method="post">
   <div class="container">
     <label for="pubId"><b>pubId</b></label>
     <input type="text" placeholder="pubId" name="pubId" required>
@@ -27,7 +26,7 @@
 </form>
 
 <h2>출판사 삭제</h2>
-<form action="<%= application.getContextPath() %>/publishers/delete">
+<form action="${ctx}/publishers/delete">
   <div class="container">
     <label for="pubId"><b>pubId</b></label>
     <input type="text" placeholder="pubId" name="pubId" required>

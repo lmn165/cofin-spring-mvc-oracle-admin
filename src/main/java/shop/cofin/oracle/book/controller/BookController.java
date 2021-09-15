@@ -29,7 +29,7 @@ public class BookController {
 		for(BookDto book : books) {
 			System.out.println(book.toString());
 		}
-		return "전체 도서목록 조회 완료";
+		return "redirect:/move/home/intro";
 	}
 	
 	@RequestMapping("/detail")
