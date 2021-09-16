@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop.cofin.oracle.common.mapper.PublisherMapper">
+	<select id="findAll" resultType="publisher">
+		select
+		    pub_id pubId,
+		    pub_name pubName,
+            mgr_name mgrName,
+            phone
+		from publishers
+	</select>
+	<select id="findById" resultType="publisher" parameterType="int">
+		select
+		    pub_id pubId,
+		    pub_name pubName,
+            mgr_name mgrName,
+            phone
+		from publishers
+        where pub_id = ${pubId}
+	</select>
+	<insert id="save" parameterType="publisher">
+		insert into
+		publishers (pub_id, pub_name, mgr_name, phone)
+		values (${pubId}, #{pubName}, #{mgrName}, #{phone})
+	</insert>
+	<update id="update" parameterType="publisher">
+		update publishers set
+		    pub_name = #{pubName},
+            mgr_name = #{mgrName},
+            phone = #{phone}
+		where pub_id like ${pubId}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from publishers
+		where pub_id like ${pubId}
+	</delete>
+	
+	
+	<select id="findByPubName" resultType="publisher" parameterType="string">
+		select
+		    pub_id pubId,
+		    pub_name pubName,
+            mgr_name mgrName,
+            phone
+		from publishers
+        where pub_name like '%'||'${value}'||'%'
+	</select>
+	<select id="findByMgrName" resultType="publisher" parameterType="string">
+		select
+		    pub_id pubId,
+		    pub_name pubName,
+            mgr_name mgrName,
+            phone
+		from publishers
+        where mgr_name like '${value}'||'%'
+	</select>
+	<select id="findByPhone" resultType="publisher" parameterType="string">
+		select
+		    pub_id pubId,
+		    pub_name pubName,
+            mgr_name mgrName,
+            phone
+		from publishers
+        where phone like '010-'||'${value}'||'%'
+	</select>
+</mapper>

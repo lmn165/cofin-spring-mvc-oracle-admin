@@ -23,7 +23,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	<!-- @Repository를 찾는다. '.'경로지정 -->
-	<mybatis-spring:scan base-package="package shop.cofin.oracle.mappers;"/>
+	<mybatis-spring:scan base-package="shop.cofin.oracle.common.mapper"/>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -39,7 +39,7 @@
 	<!-- 매퍼와 연동될 xml파일들을 찾는다 '/'경로지정 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="basicDataSource"/>
-		<property name="mapperLocations" value="classpath:shop/cofin/oracle/mappers/*.xml"/>
+		<property name="mapperLocations" value="classpath:/shop/cofin/oracle/common/mapper/*.xml"/>
 		<property name="configLocation" value="classpath:/META-INF/spring/mybatis-context.xml"/>
 	</bean>
 	
